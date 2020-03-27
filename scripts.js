@@ -65,7 +65,6 @@ request.onload = function() {
 
 	})) : (
 	 
-	 		const perro,
 		    card = document.createElement('div'),
 			card.setAttribute('class', 'card'),
 			container.appendChild(card),
