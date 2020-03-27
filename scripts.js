@@ -7,7 +7,7 @@ logo.src = 'logo.png'
 var DescriptionCharactersLimit = 300
 
 // Definimos el endpoint de la API  de studio Ghibli
-const URL = 'https://ghibliapi.herokuapp.com/films'
+const URLRequest = 'https://ghibliapi.herokuapp.com/films'
 
 const container = document.createElement('div')
 container.setAttribute('class', 'container')
@@ -21,7 +21,7 @@ app.appendChild(container)
 var request = new XMLHttpRequest()
 
 // Abrimos una nueva conexion, usando un request GET al endpoint de Studio Ghibli
-request.open('GET',URL, true)
+request.open('GET',URLRequest, true)
 
 request.onload = function() {
 
@@ -65,6 +65,7 @@ request.onload = function() {
 
 	})) : (
 	 
+	 		const perro,
 		    card = document.createElement('div'),
 			card.setAttribute('class', 'card'),
 			container.appendChild(card),
