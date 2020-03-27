@@ -27,6 +27,11 @@ request.onload = function() {
 
 	var data = JSON.parse(this.response)
 
+	//Si no hay ningun error al preguntar a la API, creamos las cards con la info.
+	//En caso contrario cargamos un error 404. 
+
+	request.status >=200 && request.status <400 ? noError() : Error404()
+
 	function noError() {
 		(
 		  
@@ -80,10 +85,7 @@ request.onload = function() {
 
 }
 
-	//Si no hay ningun error al preguntar a la API, creamos las cards con la info.
-	//En caso contrario cargamos un error 404. 
 
-	request.status >=200 && request.status <400 ? noError() : Error404()
 
 }
 
