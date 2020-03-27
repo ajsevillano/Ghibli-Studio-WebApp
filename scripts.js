@@ -27,7 +27,8 @@ request.onload = function() {
 
 	var data = JSON.parse(this.response)
 
-	request.status >=200 && request.status <400 ? (
+	function noError() {
+		(
 		  
 			data.forEach(movie => {
 				// Creamos un div con una clase "card"
@@ -63,19 +64,30 @@ request.onload = function() {
 				card.appendChild(p)
 
 
-	})) : (
-	 
-		    card = document.createElement('div'),
-			card.setAttribute('class', 'card'),
-			container.appendChild(card),
-			h1 = document.createElement('h1'),
-			h1.setAttribute('class', 'error'),
-			h1.textContent = 'ERROR 404 - NOT FOUND',
-			container.appendChild(card),
-			card.appendChild(h1)
-	)
+	}))
+	}
+
+	function Error404() {
+
+	card = document.createElement('div'),
+	card.setAttribute('class', 'card'),
+	container.appendChild(card),
+	h1 = document.createElement('h1'),
+	h1.setAttribute('class', 'error'),
+	h1.textContent = 'ERROR 404 - NOT FOUND',
+	container.appendChild(card),
+	card.appendChild(h1)
+
+}
+
+	//Si no hay ningun error al preguntar a la API, creamos las cards con la info.
+	//En caso contrario cargamos un error 404. 
+
+	request.status >=200 && request.status <400 ? noError() : Error404()
 
 }
 
 // Enviamos el request
 request.send()
+
+
