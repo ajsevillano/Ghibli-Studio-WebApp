@@ -10,7 +10,7 @@ app.appendChild(logo)
 app.appendChild(container)
 
 // Definimos el numero de caracteres que tendra la descripción de la pelicula.
-var characters = 300
+var DescriptionCharactersLimit = 300
 
 // Creamos una variable request y le asignamos un nuevo objeto XMLHttpRequest.
 var request = new XMLHttpRequest()
@@ -30,13 +30,27 @@ request.onload = function() {
 				card.setAttribute('class', 'card')
 
 				// Creamos un h1 con el titulo de la película
-				const h1 = document.createElement('h1')
-				h1.textContent = movie.title
+				let h1 = document.createElement('h1')
+				h1.textContent = movie.title + ' ' + '(' + movie.release_date + ')'
 
 				// Creamos ahora un párrafo y fijamos el contenido con la descripción de la película.
 				const p = document.createElement('p')
-				movie.description = movie.description.substring(0, characters)
-				p.textContent = `${movie.description}`
+
+				// Contamos el numero de caracteres que tiene la descripción de la película (movie.description)
+				charactersDescription = movie.description.length
+				
+				if (charactersDescription <= DescriptionCharactersLimit) {
+
+					// Si tiene menos de la cifra de la var DescriptionCharactersLimit, lo dejamos igual
+					p.textContent = `${movie.description}`
+
+				} else {
+
+					// Si tiene más de la cifra de la var DescriptionCharactersLimit, cortamos el parrafo
+					// a ese numero y le añadimos '...' detras para sugerir una continuidad.	
+					movie.description = movie.description.substring(0, DescriptionCharactersLimit)
+					p.textContent = `${movie.description}` + '...'
+				}
 
 				// Ponemos la card dentro del elemento container
 				container.appendChild(card)
