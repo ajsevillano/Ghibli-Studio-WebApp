@@ -3,20 +3,25 @@ const app = document.getElementById('root')
 const logo = document.createElement('img')
 logo.src = 'logo.png'
 
+// Definimos el numero de caracteres que tendra la descripción de la pelicula.
+var DescriptionCharactersLimit = 300
+
+// Definimos el endpoint de la API  de studio Ghibli
+const URL = 'https://ghibliapi.herokuapp.com/films'
+
 const container = document.createElement('div')
 container.setAttribute('class', 'container')
 
 app.appendChild(logo)
 app.appendChild(container)
 
-// Definimos el numero de caracteres que tendra la descripción de la pelicula.
-var DescriptionCharactersLimit = 300
+
 
 // Creamos una variable request y le asignamos un nuevo objeto XMLHttpRequest.
 var request = new XMLHttpRequest()
 
 // Abrimos una nueva conexion, usando un request GET al endpoint de Studio Ghibli
-request.open('GET','https://ghibliapi.herokuapp.com/films', true)
+request.open('GET',URL, true)
 
 request.onload = function() {
 
@@ -60,7 +65,9 @@ request.onload = function() {
 
 	})
 	} else {
-		console.log('error')
+		    const errorMessage = document.createElement('marquee')
+    		errorMessage.textContent = `Sorry, something went wrong!`
+    		app.appendChild(errorMessage)
 	}
 
 }
