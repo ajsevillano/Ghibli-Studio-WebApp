@@ -38,19 +38,17 @@ request.onload = function() {
 
 				// Contamos el numero de caracteres que tiene la descripción de la película (movie.description)
 				charactersDescription = movie.description.length
+
+				// Si tiene menos caracteres que DescriptionCharactersLimit, lo dejamos igual.
+				// Si tiene más, cortamos el parrafo al numero dado por DescriptionCharactersLimit y añadimos
+				// '...' para sugerir continuidad.
 				
-				if (charactersDescription <= DescriptionCharactersLimit) {
-
-					// Si tiene menos de la cifra de la var DescriptionCharactersLimit, lo dejamos igual
+				charactersDescription <= DescriptionCharactersLimit ? ( 
 					p.textContent = `${movie.description}`
-
-				} else {
-
-					// Si tiene más de la cifra de la var DescriptionCharactersLimit, cortamos el parrafo
-					// a ese numero y le añadimos '...' detras para sugerir una continuidad.	
-					movie.description = movie.description.substring(0, DescriptionCharactersLimit)
+					) : ( 
+					movie.description = movie.description.substring(0, DescriptionCharactersLimit),
 					p.textContent = `${movie.description}` + '...'
-				}
+					)
 
 				// Ponemos la card dentro del elemento container
 				container.appendChild(card)
