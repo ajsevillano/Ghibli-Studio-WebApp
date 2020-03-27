@@ -25,6 +25,10 @@ h1 {
   color: white;
 }
 
+h1.error {
+  color: black;
+}
+
 img {
   display: block;
   margin: 1rem auto;

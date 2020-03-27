@@ -27,8 +27,8 @@ request.onload = function() {
 
 	var data = JSON.parse(this.response)
 
-	if (request.status >=200 && request.status <400)
-		{   
+	request.status >=200 && request.status <400 ? (
+		  
 			data.forEach(movie => {
 				// Creamos un div con una clase "card"
 				const card = document.createElement('div')
@@ -63,12 +63,17 @@ request.onload = function() {
 				card.appendChild(p)
 
 
-	})
-	} else {
-		    const errorMessage = document.createElement('marquee')
-    		errorMessage.textContent = `Sorry, something went wrong!`
-    		app.appendChild(errorMessage)
-	}
+	})) : (
+	 
+		    card = document.createElement('div'),
+			card.setAttribute('class', 'card'),
+			container.appendChild(card),
+			h1 = document.createElement('h1'),
+			h1.setAttribute('class', 'error'),
+			h1.textContent = 'ERROR 404 - NOT FOUND',
+			container.appendChild(card),
+			card.appendChild(h1)
+	)
 
 }
 
