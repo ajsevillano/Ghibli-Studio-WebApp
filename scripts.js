@@ -32,7 +32,11 @@ request.onload = function() {
       let h1 = document.createElement("h1");
       h1.textContent = movie.title + " " + "(" + movie.release_date + ")";
 
-      const p = document.createElement("p");
+	  const p = document.createElement("p");
+	  
+	  const posterMovie = document.createElement("img");
+	  posterMovie.setAttribute("class", "posterMovie");
+	  posterMovie.src = "img/" + movie.title + ".jpg";
 
       charactersDescription = movie.description.length;
 
@@ -50,7 +54,8 @@ request.onload = function() {
 
       container.appendChild(card);
       card.appendChild(h1);
-      card.appendChild(p);
+	  card.appendChild(p);
+	  p.prepend(posterMovie);
     });
   }
 
