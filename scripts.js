@@ -1,7 +1,7 @@
 const app = document.getElementById("root");
 
 const logo = document.createElement("img");
-logo.src = "logo.png";
+logo.src = "img/logo.png";
 
 const DescriptionCharactersLimit = 300;
 
