@@ -4,7 +4,7 @@ The Studio Ghibli Films is a small App written in Javascript to show the use of 
 
 ## Installation
 
-Just clone or download the repository from [here]https://github.com/ajsevillano/Ghibli-Studio-WebApp.
+Just clone or download the repository from [here](https://github.com/ajsevillano/Ghibli-Studio-WebApp).
 
 
 ## Usage
