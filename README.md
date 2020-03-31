@@ -1,7 +1,6 @@
 # Studio Ghibli Films App
 
-The Studio Ghibli Films is a small App written in Javascript to show the use of the [oficial Studio Ghibli API]
-(https://ghibliapi.herokuapp.com/) using XMLHttpRequest.
+The Studio Ghibli Films is a small App written in Javascript to show the use of the [oficial Studio Ghibli API](https://ghibliapi.herokuapp.com/) using XMLHttpRequest.
 
 ## Installation
 
