@@ -14,13 +14,13 @@ app.appendChild(logo);
 app.appendChild(container);
 
 // Creamos una variable request y le asignamos un nuevo objeto XMLHttpRequest.
-var request = new XMLHttpRequest();
+let request = new XMLHttpRequest();
 
 // Abrimos una nueva conexion, usando un request GET al endpoint de Studio Ghibli
 request.open('GET', endpointURL, true);
 
 request.onload = function() {
-	var data = JSON.parse(this.response);
+	let data = JSON.parse(this.response);
 
 	request.status >= 200 && request.status < 400 ? noError() : error404();
 
