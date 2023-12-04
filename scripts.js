@@ -5,7 +5,7 @@ logo.src = 'img/logo.png';
 
 const descriptionCharactersLimit = 300;
 
-const endpointURL = 'https://ghibliapi.herokuapp.com/films';
+const endpointURL = 'https://ghibliapi.vercel.app/films';
 
 const container = document.createElement('div');
 container.setAttribute('class', 'container');
@@ -19,56 +19,56 @@ let request = new XMLHttpRequest();
 // Abrimos una nueva conexion, usando un request GET al endpoint de Studio Ghibli
 request.open('GET', endpointURL, true);
 
-request.onload = function() {
-	let data = JSON.parse(this.response);
+request.onload = function () {
+  let data = JSON.parse(this.response);
 
-	request.status >= 200 && request.status < 400 ? noError() : error404();
+  request.status >= 200 && request.status < 400 ? noError() : error404();
 
-	function noError() {
-		data.forEach(movie => {
-			const card = document.createElement('div');
-			card.setAttribute('class', 'card');
+  function noError() {
+    data.forEach((movie) => {
+      const card = document.createElement('div');
+      card.setAttribute('class', 'card');
 
-			let h1 = document.createElement('h1');
-			h1.textContent = movie.title + ' ' + '(' + movie.release_date + ')';
+      let h1 = document.createElement('h1');
+      h1.textContent = movie.title + ' ' + '(' + movie.release_date + ')';
 
-			const p = document.createElement('p');
+      const p = document.createElement('p');
 
-			const posterMovie = document.createElement('img');
-			posterMovie.setAttribute('class', 'posterMovie');
-			posterMovie.src = 'img/' + movie.title + '.jpg';
+      const posterMovie = document.createElement('img');
+      posterMovie.setAttribute('class', 'posterMovie');
+      posterMovie.src = movie.image;
 
-			charactersDescription = movie.description.length;
+      charactersDescription = movie.description.length;
 
-			// Si tiene menos caracteres que DescriptionCharactersLimit, lo dejamos igual.
-			// Si tiene más, cortamos el parrafo al numero dado por DescriptionCharactersLimit y añadimos
-			// '...' para sugerir continuidad.
+      // Si tiene menos caracteres que DescriptionCharactersLimit, lo dejamos igual.
+      // Si tiene más, cortamos el parrafo al numero dado por DescriptionCharactersLimit y añadimos
+      // '...' para sugerir continuidad.
 
-			charactersDescription <= descriptionCharactersLimit
-				? (p.textContent = `${movie.description}`)
-				: ((movie.description = movie.description.substring(
-						0,
-						descriptionCharactersLimit
-				  )),
-				  (p.textContent = `${movie.description}` + '...'));
+      charactersDescription <= descriptionCharactersLimit
+        ? (p.textContent = `${movie.description}`)
+        : ((movie.description = movie.description.substring(
+            0,
+            descriptionCharactersLimit,
+          )),
+          (p.textContent = `${movie.description}` + '...'));
 
-			container.appendChild(card);
-			card.appendChild(h1);
-			card.appendChild(p);
-			p.prepend(posterMovie);
-		});
-	}
+      container.appendChild(card);
+      card.appendChild(h1);
+      card.appendChild(p);
+      p.prepend(posterMovie);
+    });
+  }
 
-	function error404() {
-		(card = document.createElement('div')),
-			card.setAttribute('class', 'card'),
-			container.appendChild(card),
-			(h1 = document.createElement('h1')),
-			h1.setAttribute('class', 'error'),
-			(h1.textContent = 'ERROR 404 - NOT FOUND'),
-			container.appendChild(card),
-			card.appendChild(h1);
-	}
+  function error404() {
+    (card = document.createElement('div')),
+      card.setAttribute('class', 'card'),
+      container.appendChild(card),
+      (h1 = document.createElement('h1')),
+      h1.setAttribute('class', 'error'),
+      (h1.textContent = 'ERROR 404 - NOT FOUND'),
+      container.appendChild(card),
+      card.appendChild(h1);
+  }
 };
 
 // Enviamos el request
