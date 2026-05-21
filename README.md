@@ -13,7 +13,7 @@
 
 ## About
 
-My first ever JavaScript project, built to understand how APIs work and how to read and display data from an external source. No frameworks, no libraries — just vanilla JS and `XMLHttpRequest`. Keeping it simple on purpose: the goal was to understand the fundamentals before moving on to React.
+My first ever JavaScript project, built to understand how APIs work and how to read and display data from an external source. No frameworks, no libraries. Just vanilla JS and `XMLHttpRequest`. Keeping it simple on purpose: the goal was to understand the fundamentals before moving on to React.
 
 ## Features
 
